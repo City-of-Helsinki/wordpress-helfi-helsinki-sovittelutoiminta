@@ -1,0 +1,189 @@
+// Mobile first styles of navigation
+.site-navigation {
+  display: flex;
+  padding-left: 0;
+  margin: 0 auto;
+  background-color: $color-white;
+  flex-direction: column;
+  width: 100%;
+
+  @include mq($from: large) {
+    max-width: var(--container-width);
+  }
+
+  @include ie11 {
+    max-width: $global-width;
+  }
+
+  &__item {
+    position: relative;
+    list-style: none;
+    font-weight: 500;
+    color: $color-black-90;
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+    line-height: $lineheight-l;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: $spacing-s $spacing-m;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    // Make space for trigger
+    .has-children > & {
+      padding-right: $spacing-l;
+    }
+  }
+
+  &__submenu-trigger {
+    width: $spacing-m;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 56px;
+    padding-left: $spacing-s;
+    padding-right: $spacing-s;
+    box-sizing: content-box;
+    background-size: 24px;
+
+    > span {
+      transition: transform 85ms ease-out;
+    }
+
+    &[aria-expanded="true"] > span {
+      transform: rotate(180deg);
+    }
+
+    &:focus {
+      outline: solid 3px $color-coat-of-arms;
+    }
+  }
+
+  &__submenu {
+    z-index: 1;
+    max-height: 0;
+    visibility: hidden;
+    padding-left: $spacing-m;
+
+    .site-navigation__link {
+      font-weight: normal;
+      padding: 12px 14px;
+      display: block;
+      width: 100%;
+    }
+
+    &.is-active {
+      display: block;
+      visibility: visible;
+      max-height: none;
+    }
+  }
+}
+
+@include mq($from: large) {
+  .site-navigation {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &__item {
+      position: relative;
+      // Position the angle icon if it exist, submenu is absolute anyways
+      display: flex;
+      font-weight: bold;
+      white-space: nowrap;
+
+      // Items are horizontal
+      &:not(:last-child) {
+        margin-right: $spacing-l;
+      }
+
+      .is-level-2 {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+
+    &__link {
+      display: inline-block;
+      padding-left: 0;
+      padding-right: 0;
+
+      // A bottom border bar shown on hover and active state
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        bottom: 0;
+        border-bottom: solid 5px;
+        border-bottom-color: transparent;
+        transition: all 100ms ease-out;
+      }
+
+      .is-level-1 > &:focus::after {
+        left: 0;
+        right: 0;
+        border-bottom-color: $color-black-90;
+      }
+
+      &:focus {
+        outline: none;
+        transform: translate3d(0, 0, 0);
+        border-radius: 2px;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 3px $color-focus-outline-text-input-default;
+      }
+    }
+
+    &__submenu-trigger {
+      padding: 0;
+      box-sizing: border-box;
+      background-size: contain;
+    }
+
+    &__submenu {
+      visibility: hidden;
+      position: absolute;
+      left: 0;
+      min-width: 100%;
+      top: 100%;
+      background-color: $color-white;
+      border: solid 1px #eee;
+      padding-left: 0;
+      max-height: none;
+      overflow-y: visible;
+      box-shadow: 0 19px 35px rgba(0, 0, 0, 0.11);
+
+      .site-navigation__link {
+        transform: translateY(13px);
+        opacity: 0;
+        transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.25, 1),
+          opacity 0.65s cubic-bezier(0.2, 0.8, 0.25, 1);
+
+        &:hover,
+        &:focus {
+          background-color: $color-black-10;
+        }
+      }
+
+      &.is-active {
+        display: block;
+        visibility: visible;
+
+        .site-navigation__link {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

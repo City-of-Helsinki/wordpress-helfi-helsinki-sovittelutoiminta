@@ -1,0 +1,23 @@
+.rns-plugin {
+  margin-top: $spacing-xl !important;
+
+  .rns-header {
+    margin-bottom: $spacing-l !important;
+    font-size: $fontsize-heading-m !important;
+    font-family: $font-default !important;
+  }
+
+  .rns-reaction {
+    .rns-reaction-button {
+      &:hover:focus .rns-label {
+        color: $color-bus !important;
+      }
+
+      .rns-label {
+        font-weight: bold !important;
+        font-family: $font-default;
+        font-size: $fontsize-body-xl;
+      }
+    }
+  }
+}

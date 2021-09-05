@@ -1,0 +1,292 @@
+.entry-content {
+  font-size: $fontsize-body-l;
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > * {
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+
+    @include ie11 {
+      max-width: $content-width-max;
+    }
+  }
+
+  .alignwide {
+    max-width: var(--alignwide-width);
+
+    @include ie11 {
+      max-width: 90%;
+    }
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  > .alignfull {
+    max-width: none;
+  }
+
+  > :last-child {
+    // If the last child has no background, add some margin to it so that the
+    // footer's koro effect does not overlap the block's content. This also
+    // overrides the default behavior of not having bottom margin on the last
+    // block.
+    margin-bottom: calc(#{$spacing-2-xl} + #{$footer-koro-height});
+    @include breakpoint-value($block-margins) {
+      $margin: $-bp-value;
+
+      margin-bottom: calc(#{$margin} + #{$footer-koro-height});
+    }
+  }
+
+  > :last-child.has-background.alignfull {
+    // If the last child has a background and is full-aligned, override the
+    // above by adding more bottom padding to it so that the background extends
+    // to show under the footer's koro effect, without overlapping the block's
+    // content.
+    margin-bottom: 0;
+    padding-bottom: calc(#{$spacing-2-xl} + #{$footer-koro-height} + 25px);
+
+    @include breakpoint-value($block-paddings) {
+      $padding: $-bp-value;
+
+      padding-bottom: calc(#{$padding} + #{$footer-koro-height} + 25px);
+    }
+  }
+
+  > h1:first-child {
+    margin-top: $spacing-m;
+  }
+}
+
+.entry-header {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--contentwide-width);
+  margin-top: $spacing-m;
+  margin-bottom: 0;
+
+  .archive &,
+  .post.type-post &,
+  .page.type-page & {
+    position: relative;
+    max-width: none;
+
+    #breadcrumbs {
+      font-size: $fontsize-body-s;
+
+      @include mq($from: large) {
+        position: absolute;
+        top: $spacing-xl;
+      }
+    }
+
+    #breadcrumbs + * {
+      margin-top: 0;
+    }
+
+    .wp-block-columns {
+      margin: 0;
+    }
+
+    .wp-block-image {
+      margin: 0;
+    }
+
+    figcaption {
+      margin-bottom: 0;
+      font-style: italic;
+      text-align: right;
+      color: $color-black;
+    }
+
+    .mobile-koro {
+      display: none;
+    }
+
+    .desktop-koro {
+      display: block;
+    }
+
+    @include mq($from: large) {
+      .wp-block-group.has-background {
+        padding-top: 110px;
+        padding-bottom: 110px;
+      }
+    }
+
+    @include mq($until: large) {
+      .wp-block-group.has-background {
+        margin-bottom: $spacing-layout-xs;
+        padding-left: $spacing-layout-2-xs;
+        padding-right: $spacing-layout-2-xs;
+        padding-top: 0;
+        padding-bottom: 0;
+        background-color: transparent !important;
+      }
+
+      .wp-block-column.title-column {
+        margin-left: -$spacing-layout-2-xs;
+        margin-right: -$spacing-layout-2-xs;
+        margin-bottom: 0;
+        padding: $spacing-xl $spacing-layout-2-xs;
+        padding-bottom: calc(#{$spacing-xl} + 50px);
+        background-color: $color-silver;
+
+        h1 {
+          margin-bottom: 0;
+        }
+      }
+
+      .wp-block-column.image-column {
+        margin-left: 0;
+        margin-top: -$spacing-l;
+        margin-bottom: 0;
+
+        figcaption {
+          color: $color-black-50;
+        }
+      }
+
+      .wp-block-columns {
+        flex-wrap: wrap;
+
+        .wp-block-column {
+          flex-basis: 100% !important;
+          flex-grow: 1 !important;
+        }
+      }
+
+      .mobile-koro {
+        display: block;
+        margin-left: -$spacing-layout-2-xs;
+        margin-right: -$spacing-layout-2-xs;
+      }
+
+      .desktop-koro {
+        display: none;
+      }
+    }
+  }
+}
+
+.entry-content-and-sidebar {
+  .entry-sidebar .entry-meta {
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include mq($from: medium) {
+    display: flex;
+    max-width: var(--alignwide-width);
+    margin-left: auto;
+    margin-right: auto;
+
+    .entry-content {
+      width: 75%;
+      padding-right: $spacing-m;
+    }
+
+    .entry-sidebar {
+      width: 25%;
+      max-width: none;
+    }
+  }
+}
+
+.entry-title {
+  margin-bottom: $spacing-l;
+}
+
+.entry-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.entry-meta {
+  text-align: left;
+  margin-bottom: $spacing-m;
+
+  .byline {
+    margin-left: $spacing-m;
+  }
+
+  time.updated {
+    display: block;
+    margin-bottom: $spacing-s;
+    font-size: $fontsize-heading-m;
+    font-weight: bold;
+  }
+
+  .tags {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: $spacing-l;
+    margin-left: 0;
+
+    li {
+      display: inline-block;
+      margin-right: $spacing-2-xs;
+      margin-bottom: $spacing-2-xs;
+      background-color: $color-bus-light;
+      border-radius: 40px;
+      padding: $spacing-2-xs $spacing-s;
+
+      a {
+        text-decoration: none;
+        color: $color-bus;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .share {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-left: 0;
+
+    li {
+      display: inline-block;
+      margin-right: $spacing-s;
+      margin-bottom: $spacing-2-xs;
+      white-space: nowrap;
+      line-height: 40px;
+
+      a {
+        text-decoration: none;
+        color: black;
+        font-size: $fontsize-body-l;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover {
+          background: none;
+        }
+      }
+
+      .icon {
+        margin-right: $spacing-2-xs;
+        border-radius: 50%;
+        border: 2px solid black;
+        width: 40px;
+        height: 40px;
+        padding: 7.5px;
+      }
+
+      .text {
+        text-decoration: underline;
+      }
+
+      a:hover .text {
+        background-color: #f2f2fc;
+      }
+    }
+  }
+}

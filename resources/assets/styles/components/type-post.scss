@@ -1,0 +1,11 @@
+.type-post {
+  .post-reusable-block:last-child .wp-block-group.has-background.alignfull {
+    padding-bottom: calc(#{$spacing-2-xl} + #{$footer-koro-height});
+
+    @include breakpoint-value($block-paddings) {
+      $padding: $-bp-value;
+
+      padding-bottom: calc(#{$padding} + #{$footer-koro-height} + 25px);
+    }
+  }
+}

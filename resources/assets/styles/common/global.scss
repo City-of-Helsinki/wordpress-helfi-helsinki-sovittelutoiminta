@@ -1,0 +1,34 @@
+/**
+ * Global
+ */
+
+/**
+ * Block editor color palette utilities
+ * @see https://git.io/JeyD6
+ */
+@each $color-name, $color-value in $color-palette {
+  .has-#{$color-name}-background-color {
+    background-color: $color-value !important;
+  }
+}
+
+@each $color-name, $color-value in $color-palette {
+  .has-#{$color-name}-color {
+    color: $color-value !important;
+  }
+}
+
+// Remove empty trailing paragraphs.
+p:empty:last-child {
+  display: none;
+}
+
+// Remove trailing space below last paragraph in a container
+p:last-child {
+  margin-bottom: 0;
+}
+
+// Dimmed backgrounds are assumed to be dark by default.
+.has-background-dim:not(.has-background) {
+  color: $color-white;
+}

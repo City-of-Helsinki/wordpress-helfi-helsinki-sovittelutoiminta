@@ -1,0 +1,49 @@
+.wp-block-hds-content-toggle {
+  background-color: $color-summer-medium-light;
+
+  &__toggle {
+    display: flex;
+    text-align: left;
+    width: 100%;
+    padding-left: $spacing-m;
+    padding-right: $spacing-m;
+    flex-wrap: nowrap;
+    padding-top: $spacing-l;
+    padding-bottom: $spacing-l;
+    cursor: pointer;
+  }
+
+  &__text {
+    position: relative;
+    flex-grow: 1;
+    font-size: $fontsize-body-xl;
+    font-weight: bold;
+  }
+
+  &__icon {
+    align-self: center;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__toggle[aria-expanded="true"] &__icon {
+    transform: rotate(180deg);
+  }
+
+  &__content {
+    @if $is-frontend {
+      display: none;
+    }
+
+    padding-bottom: $spacing-l;
+    padding-left: $spacing-m;
+    padding-right: $spacing-m;
+
+    [aria-expanded="true"] + & {
+      display: block;
+    }
+  }
+}

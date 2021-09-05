@@ -1,0 +1,10 @@
+.wp-block-hds-question-and-answer {
+  &__question {
+    font-size: $fontsize-body-xl;
+    font-weight: bold;
+  }
+
+  &__question + &__answer {
+    margin-top: $spacing-m;
+  }
+}

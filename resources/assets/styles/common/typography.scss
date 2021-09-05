@@ -1,0 +1,119 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-default, Georgia, "Times", "Times New Roman", serif;
+  font-weight: bold;
+  margin-block-start: 0;
+  margin-block-end: $spacing-l;
+  line-height: $lineheight-m;
+
+  // increase specificity to override inline editor styles
+  @if not $is-frontend {
+    :root & {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      background-color: unset;
+    }
+  }
+}
+
+h1 {
+  font-size: $fontsize-heading-l;
+
+  [lang="ru-RU"] & {
+    font-size: 2rem;
+  }
+
+  @include mq($from: medium) {
+    font-size: $fontsize-heading-xl;
+
+    [lang="ru-RU"] & {
+      font-size: 3rem;
+    }
+  }
+}
+
+h2 {
+  font-size: $fontsize-heading-m;
+
+  @include mq($from: medium) {
+    font-size: $fontsize-heading-l;
+
+    [lang="ru-RU"] & {
+      font-size: 2rem;
+    }
+  }
+}
+
+h3 {
+  font-size: $fontsize-heading-s;
+
+  @include mq($from: medium) {
+    font-size: $fontsize-heading-m;
+  }
+}
+
+h4 {
+  font-size: $fontsize-heading-s;
+}
+
+h5 {
+  font-size: $fontsize-heading-xs;
+}
+
+h6 {
+  font-size: $fontsize-heading-xxs;
+}
+
+blockquote {
+  font-size: 22px;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: $spacing-m;
+  font-size: $fontsize-body-l;
+  line-height: $lineheight-l;
+
+  &.description {
+    font-weight: bold;
+
+    &--light {
+      font-weight: normal;
+      font-size: inherit;
+    }
+  }
+}
+
+@each $size-name, $size-value in $font-sizes {
+  .has-#{$size-name}-font-size {
+    font-size: $size-value !important;
+  }
+}
+
+a {
+  color: $color-coat-of-arms;
+
+  &:hover {
+    background-color: #f2f2fc;
+  }
+
+  &:focus {
+    outline: solid 2px $color-coat-of-arms;
+    outline-offset: 2px;
+  }
+}
