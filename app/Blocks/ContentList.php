@@ -62,4 +62,9 @@ class ContentList extends Block
 
         return parent::render(...func_get_args());
     }
+
+    public function fields()
+    {
+        return [];
+    }
 }

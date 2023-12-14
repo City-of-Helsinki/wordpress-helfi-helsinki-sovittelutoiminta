@@ -17,4 +17,14 @@ class ReactAndShareBlock extends Block
     public $supports = [
         'mode' => false,
     ];
+
+    public function fields()
+    {
+        return [];
+    }
+
+    public function with()
+    {
+        return [];
+    }
 }
