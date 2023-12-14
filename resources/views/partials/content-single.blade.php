@@ -53,7 +53,7 @@
     </div>
     <div class="post-reusable-block">
       <x-group align="full">
-        @if ($footer_reusable_block)
+        @if ( \App\footer_reusable_block() )
           {!! apply_filters('the_content', $footer_reusable_block) !!}
         @endif
       </x-group>

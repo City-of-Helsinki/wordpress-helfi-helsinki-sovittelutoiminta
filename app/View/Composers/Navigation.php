@@ -32,6 +32,20 @@ class Navigation extends Composer
         ];
     }
 
+    /**
+     * Data to be merged and passed to the view before rendering.
+     *
+     * @return array
+     */
+    protected function merge()
+    {
+        return array_merge(
+            $this->with(),
+            $this->view->getData(),
+            $this->override()
+        );
+    }
+
     public function primaryNavigation(): array
     {
         $navigation = Navi::build('primary_navigation')->toArray();

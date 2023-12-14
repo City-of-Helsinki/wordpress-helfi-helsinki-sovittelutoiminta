@@ -9,6 +9,10 @@ namespace App;
 use function Roots\asset;
 use function Roots\base_path;
 
+add_filter('acorn/paths.storage', function ($path) {
+    return trailingslashit(ABSPATH).'.cache/sage/';
+  });
+
 /**
  * Register the theme assets.
  *
@@ -51,7 +55,11 @@ add_action('wp_enqueue_scripts', function () {
  * @return void
  */
 add_action('enqueue_block_editor_assets', function () {
-    if ($manifest = asset('scripts/manifest.asset.php')->get()) {
+    $dir = get_template_directory();
+
+    if (file_exists($dir . '/dist/scripts/manifest.asset.php')) {
+        $manifest = include $dir . '/dist/scripts/manifest.asset.php';
+
         wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), $manifest['dependencies'], null, true);
         wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), ['sage/vendor.js'], null, true);
 
@@ -153,6 +161,8 @@ add_action('after_setup_theme', function () {
     add_theme_support('wp-block-styles');
     add_theme_support('disable-custom-colors');
     add_theme_support('disable-custom-font-sizes');
+
+    remove_theme_support( 'widgets-block-editor' );
 
     add_image_size('tiny', 50, 50, true);
     add_image_size('wide', 1200);

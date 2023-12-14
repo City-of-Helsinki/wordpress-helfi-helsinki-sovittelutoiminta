@@ -11,11 +11,11 @@ class LinkList extends NativeBlock
     public function with()
     {
         return [
-            'heading' => $this->attributes->heading,
-            'links' => json_decode($this->attributes->links),
-            'backgroundColor' => $this->attributes->backgroundColor,
-            'textColor' => $this->attributes->textColor,
-            'compact' => $this->attributes->compact,
+            'heading' => $this->attributes->heading ?? '',
+            'links' => json_decode($this->attributes->links ?? ''),
+            'backgroundColor' => $this->attributes->backgroundColor ?? '',
+            'textColor' => $this->attributes->textColor ?? '',
+            'compact' => $this->attributes->compact ?? '',
         ];
     }
 }

@@ -24,7 +24,7 @@
                     <a
                         class="wp-block-button__link @if ($textColor) has-{!! $textColor !!}-color has-text-color @endif"
                         href="{{ $linkUrl }}"
-                        @if ($isLinkExternal)
+                        @if ( ! empty($isLinkExternal) )
                             aria-label="{{sprintf(__('%s (opens in new tab)', 'hds'), $linkText)}}"
                             target="_blank"
                         @endif

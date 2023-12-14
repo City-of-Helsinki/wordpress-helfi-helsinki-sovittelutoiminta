@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  @if ($content)
+  @if ( ! empty($content) )
     @includeFirst(['partials.content-archive', 'partials.content'])
   @else
     @include('partials.page-header')

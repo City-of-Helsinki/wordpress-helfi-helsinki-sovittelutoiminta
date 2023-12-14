@@ -7,11 +7,24 @@
     @endif
   </a>
 
+  <?php
+
+    // View composer Navigation with() variables not working
+    if (empty($language_code)) {
+      $language_code = \App\current_locale_code();
+    }
+
+    if ( empty( $language_navigation ) ) {
+      $language_navigation = \App\languages_list();
+    }
+
+  ?>
+
   <div class="site-header__name">
     <h1>{{ $site_name }}</h1>
   </div>
 
-  @if ($search_enabled)
+  @if ( \App\is_search_enabled() )
     <div class="site-header__search site-header__search--desktop">
       @include('partials.search')
     </div>
@@ -32,7 +45,7 @@
     </button>
   </div>
 
-  @if ($search_enabled)
+  @if ( \App\is_search_enabled() )
     <div class="site-header__search site-header__search--mobile">
       @include('partials.search')
     </div>

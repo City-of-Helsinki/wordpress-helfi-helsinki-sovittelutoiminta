@@ -11,7 +11,7 @@ class QuestionAndAnswer extends NativeBlock
     public function with()
     {
         return [
-            'question' => $this->attributes->question,
+            'question' => $this->attributes->question ?? '',
         ];
     }
 }
