@@ -42,7 +42,7 @@
     }
   ],
   "require": {
-    "generoi/sage-nativeblock": "dev-master",
+    "generoi/sage-nativeblock": "master@dev",
     "log1x/acf-composer": "^2.1",
     "log1x/navi": "^2.0",
     "log1x/sage-svg": "^1.1",
