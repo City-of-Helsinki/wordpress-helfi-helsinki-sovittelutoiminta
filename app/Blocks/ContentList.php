@@ -51,7 +51,7 @@ class ContentList extends Block
         return new WP_Query($query);
     }
 
-    public function render($block, $content = '', $preview = false, $post = 0)
+    public function render($block, $content = '', $preview = false, $post_id = 0, $wp_block = false, $context = false)
     {
         if (!$this->query()->have_posts()) {
             if (is_bool($preview) && $preview) {

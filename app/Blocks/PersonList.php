@@ -39,7 +39,7 @@ class PersonList extends Block
             ->all();
     }
 
-    public function render($block, $content = '', $preview = false, $post = 0)
+    public function render($block, $content = '', $preview = false, $post_id = 0, $wp_block = false, $context = false)
     {
         if (!$this->persons()) {
             if (is_bool($preview) && $preview) {
