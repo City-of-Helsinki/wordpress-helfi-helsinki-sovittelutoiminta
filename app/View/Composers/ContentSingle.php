@@ -32,7 +32,7 @@ class ContentSingle extends Composer
             'categories' => $this->categories($post),
             'related' => $this->related(),
             'color' => $this->color($post),
-            'footer_reusable_block' => get_post(__('article_footer_reusable_block_id', 'hds'))->post_content
+            'footer_reusable_block' => get_post(__('article_footer_reusable_block_id', 'hds'))->post_content ?? '',
         ];
     }
 
