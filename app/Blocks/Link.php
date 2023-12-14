@@ -2,8 +2,6 @@
 
 namespace App\Blocks;
 
-use Genero\Sage\NativeBlock\NativeBlock;
-
 class Link extends NativeBlock
 {
     public $name = 'hds/link';

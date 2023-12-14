@@ -2,8 +2,6 @@
 
 namespace App\Blocks;
 
-use Genero\Sage\NativeBlock\NativeBlock;
-
 class QuestionAndAnswer extends NativeBlock
 {
     public $name = 'hds/question-and-answer';
