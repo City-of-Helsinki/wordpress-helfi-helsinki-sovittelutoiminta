@@ -37,8 +37,8 @@
   },
   "repositories": [
     {
-      "type": "vcs",
-      "url": "https://github.com/generoi/sage-nativeblock"
+      "type": "composer",
+      "url": "https://packagist.minasithil.genero.fi"
     }
   ],
   "require": {
