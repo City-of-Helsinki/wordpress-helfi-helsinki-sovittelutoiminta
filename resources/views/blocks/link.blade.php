@@ -1,7 +1,7 @@
 <a
   class="hds-link @if ($isCompact) compact @endif"
   href="{{ $url }}"
-  @if ($isExternal || $isPhone)
+  @if ($isExternal || $isTel)
     target="_blank"
   @endif
   @if ($isExternal)
